@@ -46,6 +46,7 @@ if sc.rtm_connect():
             #print evt
             if "type" in evt and "user" in evt:
                 if evt["type"] == "message" and evt["user"] != bot_user and "text" in evt:
+                    sc.server.send_to_websocket('{"type": "user_typing", "channel": "' + str(evt["channel"]) + '", "user": "' + bot_user + '"')
                     match = re.search(r"^\?(\w+) {0,1}(.*)", evt["text"], re.MULTILINE)
                     if match:
                         get_commands_by_dir()
