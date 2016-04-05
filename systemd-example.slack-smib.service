@@ -1,0 +1,16 @@
+# Service file for use with systemd
+# Configure your options and copy this file to /etc/systemd/system/smib.service
+# Output will be sent to syslog
+[Unit]
+Description=So Make It Slack Bot
+After=network.target
+
+[Service]
+WorkingDirectory=/home/smib/
+ExecStart=/home/smib/slack-smib/smib.py
+User=smib
+Group=smib
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
